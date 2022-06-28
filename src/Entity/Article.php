@@ -40,7 +40,7 @@ class Article
     private $comments;
 
     #[ORM\ManyToOne(targetEntity: Media::class)]
-    private $featureImage;
+    private $featuredImage;
 
     public function __construct()
     {
@@ -182,14 +182,14 @@ class Article
         return $this;
     }
 
-    public function getFeatureImage(): ?Media
+    public function getFeaturedImage(): ?Media
     {
-        return $this->featureImage;
+        return $this->featuredImage;
     }
 
-    public function setFeatureImage(?Media $featureImage): self
+    public function setFeaturedImage(?Media $featuredImage): self
     {
-        $this->featureImage = $featureImage;
+        $this->featuredImage = $featuredImage;
 
         return $this;
     }

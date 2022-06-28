@@ -31,7 +31,6 @@ class Menu
     private $article;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
-    #[ORM\JoinColumn(nullable: false)]
     private $category;
 
     #[ORM\ManyToOne(targetEntity: Page::class)]
