@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use App\Entity\Article;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use App\Entity\Category;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -33,7 +35,9 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::SubMenu('Articles', 'fas fa-newspaper')->setSubItems([
-              MenuItem::linkToCrud('Tous les articles', 'fas fa-newspaper', Article::class)
+              MenuItem::linkToCrud('Tous les articles', 'fas fa-newspaper', Article::class),
+              MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW),
+              MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class)
         ]);
     }
 }
