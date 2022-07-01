@@ -4,24 +4,60 @@
 
 {% block body %}
  <main class="container">
-   <div class="row">
-         <div class="col-md-8">
-         <h4 class="article-title">Articles recents</h4>
-          <div id="articles-list">
-                    {% include 'article/list.html.twig' with { articles: articles, leftCol: 5, rightCol: 7 } %}
+       <div class="row g-5">
+            <div class="col-xl-8">
+               <h3 class="pb-4 mb-4 fst-italic border-bottom">Articles récents</h3>
+                <div id="articles-list">
+                    {% include 'article/list.html.twig' with { articles} %}
                 </div>
             </div>
-         </div>
-
-         <div class="col-md-4">
-          <div class="col-xxl-4">
+       
+         
+       <div class="col-xl-4">
                 <div class="position-sticky" style="top: 2rem;">
                     {% include 'widget/about.html.twig' %}
                     {% include 'widget/categories.html.twig' %}
                 </div>
-            </div>
-         </div>
-   </div>
-    
-</main>
+       </div>
+  </div>
+  
+ <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="assets/image/slides/bg-1.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="assets/image/slides/bg-2.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="assets/image/slides/bg-5.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+</div>
+</main><br/>
 {% endblock %}

@@ -1,4 +1,4 @@
-import '../css/app.scss';
+import 'assets/css/app.scss';
 import {Dropdown} from 'bootstrap';
 document.addEventListener('DOMContentLoaded', () => {
     new App();
