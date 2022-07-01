@@ -1,9 +1,8 @@
 <div class="p-4">
     <h4 class="fst-italic">Catégories</h4>
     <ol class="list-unstyled mb-0">
-            <li><a class="text-decoration-none" href="#">Tutoriel dondou</a></li>
-             <li><a class="text-decoration-none" href="#">Tutoriel symfony</a></li>
-              <li><a class="text-decoration-none" href="#">Tutoriel html</a></li>
-             <li><a class="text-decoration-none" href="#">Tutoriel blog dondou</a></li>
+    {% for Category in categories %}
+       <li><a class="text-decoration-none" href="{{ path('category_show', { 'slug': Category.slug }) }}">{{Category.name}}</a></li>
+    {% endfor %}
     </ol>
 </div>
