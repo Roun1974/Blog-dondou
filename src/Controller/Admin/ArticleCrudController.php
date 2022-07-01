@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -27,6 +28,7 @@ class ArticleCrudController extends AbstractCrudController
             yield TextField::new('title');
             yield SlugField::new('slug')
             ->setTargetFieldName('title');
+            yield AssociationField::new('categories');
             yield TextEditorField::new('content');
             yield TextField::new('featuredText', 'Texte mis en avant');
             yield DateTimeField::new('createdAt')->hideOnForm();

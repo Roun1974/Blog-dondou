@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Bienvenue !{% endblock %}
-
+{% block title %}Accueil{% endblock %}
 {% block body %}
+ {% include('inc/slides.html.twig') %}
  <main class="container">
        <div class="row g-5">
             <div class="col-xl-8">
@@ -11,8 +10,6 @@
                     {% include 'article/list.html.twig' with { articles} %}
                 </div>
             </div>
-       
-         
        <div class="col-xl-4">
                 <div class="position-sticky" style="top: 2rem;">
                     {% include 'widget/about.html.twig' %}
@@ -20,6 +17,7 @@
                 </div>
        </div>
   </div>
+  <hr>
   
  <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">

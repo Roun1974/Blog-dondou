@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>Dondou web - {% block title %} {% endblock %}</title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -18,11 +18,10 @@
     </head>
     <body>
     {% include('inc/navbar.html.twig') %}
-       {% include('inc/slides.html.twig') %}
-            <nav class="py-2 bg-dark border-bottom">
+            <nav class="py-2 bg-white border-bottom">
           <div class="container d-flex flex-wrap">
             <div class="dropdown">
-               <a class="nav nav-link dropdown-toggle text-white" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+               <a class="nav nav-link dropdown-toggle text-dark" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
                  Mon blog
                </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminDashboard">
@@ -31,7 +30,7 @@
            </ul>
           </div>
           <div class="dropdown">
-               <a class="nav nav-link dropdown-toggle text-white" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+               <a class="nav nav-link dropdown-toggle text-dark" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
                  Ajouter
                </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminAdd">
@@ -40,8 +39,8 @@
            </ul>
           </div>
           </div>
-       </nav>
+       </nav><br/>
         {% block body %}{% endblock %}
-         {% include('inc/footer.html.twig') %}
+        {% include('inc/footer.html.twig') %}
     </body>
 </html>
