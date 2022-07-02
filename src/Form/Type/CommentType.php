@@ -5,6 +5,8 @@ namespace App\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class CommentType extends AbstractType
 {
@@ -13,6 +15,10 @@ class CommentType extends AbstractType
         $builder
             ->add('content', TextareaType::class, [
                 'label' => 'Votre message'
+            ])
+            ->add('article', HiddenType::class)
+            ->add('send', SubmitType::class, [
+                'label' => 'Envoyer'
             ]);
     }
 }
