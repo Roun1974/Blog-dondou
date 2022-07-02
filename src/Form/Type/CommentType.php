@@ -7,6 +7,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Article;
+use App\Entity\Comment;
 
 class CommentType extends AbstractType
 {
@@ -14,11 +18,22 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'label' => 'Votre message'
+                'label' => 'Votre message :'
             ])
             ->add('article', HiddenType::class)
             ->add('send', SubmitType::class, [
                 'label' => 'Envoyer'
             ]);
+        $builder->get('article')
+            ->addModelTransformer(new CallbackTransformer(
+                fn (Article $article) => $article->getId(),
+                fn (Article $article) => $article->getTitle()));
+    }
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Comment::class,
+            'csrf_token_id' => 'comment-add'
+        ]);
     }
 }

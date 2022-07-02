@@ -27,6 +27,11 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    public function __construct(Article $article)
+    {
+        $this->article = $article;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
