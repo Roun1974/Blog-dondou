@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use App\Entity\Category;
+use App\Entity\Comment;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -33,11 +34,14 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToRoute('Aller sur le site', 'fas fa-undo', 'app_home');
         yield MenuItem::SubMenu('Articles', 'fas fa-newspaper')->setSubItems([
               MenuItem::linkToCrud('Tous les articles', 'fas fa-newspaper', Article::class),
               MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW),
-              MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class)
+              MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class),
+              
         ]);
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-comment', Comment::class);
+        
     }
 }

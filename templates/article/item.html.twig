@@ -12,7 +12,7 @@
                 <a href="{{ path('article_show', { 'slug': article.slug }) }}" class="text-decoration-none">{{ article.title }}</a>
             </h2>
              <p>
-                {{ article.createdAt|date('d M Y') }} 
+                <strong>Article ajouté le : {{ article.createdAt|date('d M Y') }} </strong>
                     / <a class="text-decoration-none" href="{{ path('article_show', { 'slug': article.slug }) }}#comments">Laisser un commentaire</a>
                 
             </p>
