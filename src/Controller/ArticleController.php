@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Form\Type\CommentType;
+
 
 class ArticleController extends AbstractController
 {
@@ -15,8 +17,10 @@ class ArticleController extends AbstractController
         if (!$article) {
             return $this->redirectToRoute('app_home');
         }
-        return $this->render('article/show.html.twig', [
-            'article' => $article
+        $commentForm = $this->createForm(CommentType::class);
+        return $this->renderForm('article/show.html.twig', [
+            'article' => $article,
+            'commentForm' => $commentForm
         ]);
     }
 }
