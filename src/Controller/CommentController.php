@@ -14,6 +14,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/** @method User getUser() */
 class CommentController extends AbstractController
 {
     #[Route('/ajax/comments', name: 'comment_add', methods: ['POST'])]
@@ -31,9 +32,17 @@ class CommentController extends AbstractController
                 'code' => 'ARTICLE_NOT_FOUND'
             ], Response::HTTP_BAD_REQUEST);
         }
+        $user = $this->getUser();
+        
+        if($user){
+          return $this->json([
+            'code' => 'USER_NOT_AUTHENTICATED_FULLY'
+        ], Response::HTTP_BAD_REQUEST);
+        }
+
         $comment= new Comment($article);
         $comment->setContent($commentData['content']);
-        $comment->setUser($userRepo->findOneBy(['id'=>1]));
+        $comment->setUser($user);
         $comment->setCreatedAt(new \Datetime());
         $comment->handleRequest($request);
         
