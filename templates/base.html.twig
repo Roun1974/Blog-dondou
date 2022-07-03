@@ -1,3 +1,4 @@
+{% set menus = menu_service.findAll %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -25,8 +26,8 @@
                  Mon blog
                </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminDashboard">
-              <li><a class="dropdown-item" href="{{path('admin')}}">Tableau de bord</a></li>
-              <li><a class="dropdown-item" href="#">Menu</a></li>
+              <li><a class="dropdown-item" href="{{ ea_url() }}">Tableau de bord</a></li>
+              <li><a class="dropdown-item" href="{{ ea_admin_url('MenuCrudController') }}">Menu</a></li>
            </ul>
           </div>
           <div class="dropdown">
