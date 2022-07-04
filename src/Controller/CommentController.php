@@ -14,7 +14,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-/** @method User getUser() */
+
 class CommentController extends AbstractController
 {
     #[Route('/ajax/comments', name: 'comment_add', methods: ['POST'])]

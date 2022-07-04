@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
@@ -11,16 +12,17 @@ class Media
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups('article')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $altText;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $filename;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $altText;
 
     public function getId(): ?int
     {
@@ -39,6 +41,18 @@ class Media
         return $this;
     }
 
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    public function setFilename(string $filename): self
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
     public function getAltText(): ?string
     {
         return $this->altText;
@@ -51,15 +65,8 @@ class Media
         return $this;
     }
 
-    public function getFilename(): ?string
+    public function __toString(): string
     {
-        return $this->filename;
-    }
-
-    public function setFilename(string $filename): self
-    {
-        $this->filename = $filename;
-
-        return $this;
+        return $this->name;
     }
 }

@@ -19,6 +19,7 @@
     </head>
     <body>
     {% include('inc/navbar.html.twig') %}
+    {% if is_granted('ROLE_AUTHOR') %}
             <nav class="py-2 bg-white border-bottom">
           <div class="container d-flex flex-wrap">
             <div class="dropdown">
@@ -27,7 +28,9 @@
                </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminDashboard">
               <li><a class="dropdown-item" href="{{ ea_url() }}">Tableau de bord</a></li>
+              {% if is_granted('ROLE_ADMIN') %}
               <li><a class="dropdown-item" href="{{ ea_admin_url('MenuCrudController') }}">Menu</a></li>
+                     {% endif %}
            </ul>
           </div>
           <div class="dropdown">
@@ -41,6 +44,7 @@
           </div>
           </div>
        </nav><br/>
+       {% endif %}
         {% block body %}{% endblock %}
         {% include('inc/footer.html.twig') %}
     </body>
