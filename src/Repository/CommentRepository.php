@@ -27,10 +27,8 @@ class CommentRepository extends ServiceEntityRepository
             ->orderBy('c.createdAt', 'DESC');
 
         if ($article) {
-            $qb
-                ->leftJoin('c.article', 'article')
-                ->leftJoin('c.answers', 'answers')
-                ->where($qb->expr()->eq('article.id', ':articleId'))
+            $qb->leftJoin('c.article','a')
+                ->where($qb->expr()->eq('a.id', ':articleId'))
                 ->setParameter('articleId', $article->getId());
         }
 

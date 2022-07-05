@@ -19,7 +19,7 @@ class App{
 
     handleCommentForm(){
     const commentForm = document.querySelector('form.comment-form');
-    if (null === commentForm) {
+    if (null == commentForm) {
         return;
     }
     commentForm.addEventListener('submit',async (e) => {
@@ -32,12 +32,11 @@ class App{
             return;
         }
     const json = await response.json();
-    if(json.code ==='COMMENT_ADDED_SUCCESSFULLY'){
+    if(json.code =='COMMENT_ADDED_SUCCESSFULLY'){
 const commentList=document.querySelector('.comment-list');
 const commentCount=document.querySelector('.comment-count');
 const commentContent=document.querySelector('#comment-content');
-commentList.insertAjacentHTML('beforend',json.message);
-commentList.lastElementChild.scrollIntoView();
+commentList.insertAjacentHTML('afterbegin',json.message);
 commentCount.innerText=json.numberOfComments;
 commentContent.value='';
     }

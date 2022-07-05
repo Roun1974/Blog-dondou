@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,7 +43,6 @@ class CommentController extends AbstractController
         $comment->setContent($commentData['content']);
         $comment->setUser($user);
         $comment->setCreatedAt(new \Datetime());
-        $comment->handleRequest($request);
         
         $entityManager->persist($comment);
         $entityManager->flush();
