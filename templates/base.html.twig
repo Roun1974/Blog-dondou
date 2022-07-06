@@ -1,4 +1,5 @@
 {% set menus = menu_service.findAll %}
+{% set options = option_service.findAll %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -20,11 +21,11 @@
     <body>
     {% include('inc/navbar.html.twig') %}
     {% if is_granted('ROLE_AUTHOR') %}
-            <nav class="py-2 bg-white border-bottom">
+            <nav class="py-2 bg-white border-bottom" >
           <div class="container d-flex flex-wrap">
             <div class="dropdown">
-               <a class="nav nav-link dropdown-toggle text-dark" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
-                 Mon blog
+               <a class="nav nav-link dropdown-toggle text-info " role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                 {{ options['blog_title'] }} 
                </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminDashboard">
               <li><a class="dropdown-item" href="{{ ea_url() }}">Tableau de bord</a></li>
@@ -34,8 +35,8 @@
            </ul>
           </div>
           <div class="dropdown">
-               <a class="nav nav-link dropdown-toggle text-dark" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
-                 Ajouter
+               <a class="nav nav-link dropdown-toggle text-info" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                  Ajouter 
                </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminAdd">
               <li><a class="dropdown-item" href="{{ ea_admin_url('ArticleCrudController', 'new') }}">Article</a></li>

@@ -5,7 +5,7 @@
             </button>
             <div class="collapse navbar-collapse" id="mainMenu">
                 <ul class="navbar-nav ml-auto navList">
-                    <li class="nav-item active"><a href="{{path('app_home')}}" class="nav-link"><i class="fas fa-home"></i>HOME<span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item active"><a href="{{path('app_home')}}" class="nav-link"><i class="fas fa-home"></i>ACCUEIL<span class="sr-only">(current)</span></a></li>
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fas fa-cogs"></i>Services</a>
                     </li>
@@ -16,7 +16,7 @@
                         <a href="#" class="nav-link"><i class="fas fa-phone"></i>Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-users"></i>About</a>
+                        <a href="#" class="nav-link"><i class="fas fa-users"></i>Qui sommes nous </a>
                     </li>
                     {% for menu in menus %}
                      {% if menu.subMenus.count > 0 %}
@@ -37,12 +37,15 @@
                      {% endif %}
                    {% endfor %}
                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                   
                     <li class="nav-item">
                         <a href="{{ path('login') }}" class="nav-link">se connecter</a>
                     </li>
+                    {% if '1' == options['users_can_register'] %}
                     <li class="nav-item">
                         <a href="{{ path('app_register') }}" class="nav-link">s'inscrire</a>
                     </li>
+                     {% endif %}
                      {% else %}
                       <li class="nav-item">
                         <a href="{{ path('logout') }}" class="nav-link">Déconnexion</a>

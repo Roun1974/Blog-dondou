@@ -4,11 +4,11 @@ namespace App\Repository;
 
 use App\Entity\Option;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Option>
- *
  * @method Option|null find($id, $lockMode = null, $lockVersion = null)
  * @method Option|null findOneBy(array $criteria, array $orderBy = null)
  * @method Option[]    findAll()
@@ -21,46 +21,24 @@ class OptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Option::class);
     }
 
-    public function add(Option $entity, bool $flush = false): void
+    public function findAllForTwig(): array
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        return $this->createQueryBuilder('o', 'o.name')
+            ->getQuery()
+            ->getResult();
     }
 
-    public function remove(Option $entity, bool $flush = false): void
+    public function getValue(string $name): mixed
     {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
+        try {
+            return $this->createQueryBuilder('o')
+                ->select('o.value')
+                ->where('o.name = :name')
+                ->setParameter('name', $name)
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NoResultException|NonUniqueResultException) {
+            return null;
         }
     }
-
-//    /**
-//     * @return Option[] Returns an array of Option objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Option
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

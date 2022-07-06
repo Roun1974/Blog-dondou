@@ -7,12 +7,14 @@ use App\Repository\ArticleRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use App\Entity\Option;
 
 class ArticleService
 {
     public function __construct(
         private RequestStack $requestStack,
         private ArticleRepository $articleRepo,
+        private OptionService $optionService,
         private PaginatorInterface $paginator
     ) {
 
@@ -22,7 +24,7 @@ class ArticleService
     {
         $request = $this->requestStack->getMainRequest();
         $page = $request->query->getInt('page', 1);
-        $limit = 2;
+        $limit = $this->optionService->getValue(Option::BLOG_ARTICLES_LIMIT);
 
         $articlesQuery = $this->articleRepo->findForPagination($category);
 

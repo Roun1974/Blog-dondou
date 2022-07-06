@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: '`option`')]
 class Option
 {
+    const BLOG_ARTICLES_LIMIT = 'blog_articles_limit';
+    const BLOG_COPYRIGHT = 'blog_copyright';
+    const BLOG_TITLE = 'blog_title';
+    const HEADER_TITLE = 'header_title';
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -20,11 +25,19 @@ class Option
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private $value;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
+
+    public function __construct(string $label,string $name,string $value, string $type)
+    {
+        $this->label = $label;
+        $this->name = $name;
+        $this->value = $value;
+        $this->type = $type;
+    }
 
     public function getId(): ?int
     {
@@ -77,5 +90,10 @@ class Option
         $this->type = $type;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+         return  $this->value ?? '';
     }
 }
