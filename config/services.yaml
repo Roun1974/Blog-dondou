@@ -6,6 +6,8 @@
 parameters:
     medias_directory: 'public/uploads'
     uploads_directory: 'uploads/'
+    thumbnails.upload_directory: '%kernel.project_dir%/public/upload/thumbnails'
+    videos.upload_directory: '%kernel.project_dir%/public/upload/videos'
 services:
     # default configuration for services in *this* file
     _defaults:

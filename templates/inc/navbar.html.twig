@@ -51,6 +51,9 @@
                         <a href="{{ path('logout') }}" class="nav-link">Déconnexion</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ path('app_video') }}" class="nav-link">Vidéos</a>
+                    </li>
+                    <li class="nav-item">
                         <a href=" {{ path('user', { 'username': app.user.username }) }}" class="nav-link">Mon profile</a>
                     </li>
                      {% endif %}
