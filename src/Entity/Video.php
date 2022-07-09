@@ -17,11 +17,11 @@ class Video
     private $id;
 
     #[Assert\NotBlank]
-    #[Assert\Length(min: 10)]
+    #[Assert\Length(min: 5)]
     #[ORM\Column(type: 'string', length: 100)]
     private $title;
 
-    #[Assert\Length(min: 10)]
+    #[Assert\Length(min: 5)]
     #[ORM\Column(type: 'string', length: 2000, nullable: true)]
     private $description;
 
