@@ -10,13 +10,13 @@
                         <a href="#" class="nav-link"><i class="fas fa-cogs"></i>Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-briefcase"></i>Portfolio</a>
+                        <a href="{{ path('app_portfolio') }}" class="nav-link"><i class="fas fa-briefcase"></i>Portfolio</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fas fa-phone"></i>Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-users"></i>Qui sommes nous </a>
+                        <a href="{{ path('app_apropos') }}" class="nav-link"><i class="fas fa-users"></i>Qui sommes nous </a>
                     </li>
                     {% for menu in menus %}
                      {% if menu.subMenus.count > 0 %}
