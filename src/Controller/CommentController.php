@@ -16,16 +16,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommentController extends AbstractController
 {
-    #[Route('/ajax/comments', name: 'comment_add', methods: ['POST'])]
+    #[Route('/comments', name: 'comment_add', methods: ['POST'])]
     public function add(Request $request,CommentRepository $commentRepo,ArticleRepository $articleRepo,UserRepository $userRepo,EntityManagerInterface $entityManager): Response
     {
-        $commentData = $request->request->all ('comment');
-        if (!$this->isCsrfTokenValid('comment-add', $commentData['_token'])) {
+        $data = $request->request->all ('comment');
+        if (!$this->isCsrfTokenValid('comment-add', $data['_token'])) {
             return $this->json([
                 'code' => 'INVALID_CSRF_TOKEN'
             ], Response::HTTP_BAD_REQUEST);
         }
-        $article = $this->articleRepo->findOneBy(['id' => $commentData['article']]);
+        
+        $article = $this->articleRepo->findOneBy(['id' => $data['article']]);
         if (!$article) {
             return $this->json([
                 'code' => 'ARTICLE_NOT_FOUND'
@@ -40,7 +41,7 @@ class CommentController extends AbstractController
         }
 
         $comment= new Comment($article);
-        $comment->setContent($commentData['content']);
+        $comment->setContent($data['content']);
         $comment->setUser($user);
         $comment->setCreatedAt(new \Datetime());
         

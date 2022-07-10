@@ -1,9 +1,9 @@
 {% set username = comment.user.username %}
-<div class="comment mb-5"  id="{{ comment.id }}">
+<div class="comment mb-5"  id="comment-{{ comment.id }}">
    <div class="card">
       <div class="card-body">
          <h5 class="card-title">
-                <a class="text-decoration-none" href="#">
+                <a class="text-decoration-none" href="{{ path('user', { 'username': app.user.username }) }}">
                     Ajouté par : <span class="comment-author"> {{ username }}  </span>
                 </a>
             </h5>
