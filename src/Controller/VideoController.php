@@ -15,7 +15,7 @@ class VideoController extends AbstractController
 {
     /**
      * @Route("/video", name="app_video")
-     * @Security("is_granted('ROLE_USER')")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function index(RequestStack $requestStack,VideoService $videoService,VideoRepository $videoRepo): Response
     {
