@@ -31,9 +31,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
     private $comments;
 
-    public function __construct()
+    public function __construct(?string $username = null)
     {
         $this->comments = new ArrayCollection();
+        $this->username = $username;
     }
 
     public function getId(): ?int

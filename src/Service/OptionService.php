@@ -22,4 +22,8 @@ class OptionService
     {
         return $this->optionRepo->getValue($name);
     }
+    public function __toString(): string
+    {
+         return  $this->value ?? '';
+    }
 }
