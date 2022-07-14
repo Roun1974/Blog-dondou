@@ -32,9 +32,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $comments;
 
     public function __construct(?string $username = null)
-    {
-        $this->comments = new ArrayCollection();
+    {   
         $this->username = $username;
+        $this->comments = new ArrayCollection();
+       
     }
 
     public function getId(): ?int

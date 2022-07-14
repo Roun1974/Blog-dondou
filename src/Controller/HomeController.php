@@ -15,6 +15,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\Option;
 use App\Entity\User;
 use App\Service\OptionService;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class HomeController extends AbstractController
 {
