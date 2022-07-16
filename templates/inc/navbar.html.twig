@@ -6,18 +6,20 @@
             <div class="collapse navbar-collapse" id="mainMenu">
                 <ul class="navbar-nav ml-auto navList">
                     <li class="nav-item active"><a href="{{path('app_home')}}" class="nav-link"><i class="fas fa-home"></i>ACCUEIL<span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_temoignage') }}" class="nav-link"><i class="fas fa-cogs"></i>Services</a>
+                     <li class="nav-item">
+                        <a href="{{ path('app_portfolio') }}" class="nav-link"><i class="fas fa-briefcase"></i>Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('app_portfolio') }}" class="nav-link"><i class="fas fa-briefcase"></i>Portfolio</a>
+                        <a href="{{ path('app_projets') }}" class="nav-link"><i class="fas fa-cogs"></i>Nos projets</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a href="{{ path('app_equipe') }}" class="nav-link"><i class="fas fa-users"></i>Qui sommes nous </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ path('app_contact') }}" class="nav-link"><i class="fas fa-phone"></i>Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_apropos') }}" class="nav-link"><i class="fas fa-users"></i>Qui sommes nous </a>
-                    </li>
+                    
                     {% for menu in menus %}
                      {% if menu.subMenus.count > 0 %}
                      <div class="dropdown">

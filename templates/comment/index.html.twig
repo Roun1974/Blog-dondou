@@ -8,7 +8,7 @@
                 </a>
             </h5>
             <strong>Le {{ comment.createdAt|date('d M Y à H : i : s') }}</strong>
-            <p clas="card-text">{{comment.content}}</p>
+            <p clas="card-text">{{comment.content|raw}}</p>
       </div>
    </div>
 </div>
