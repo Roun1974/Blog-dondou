@@ -19,7 +19,7 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <button type="submit" class="btn btn-primary">Se connecter</button>
-             <a href="#" class="btn btn-primary">Mot de passe oublié ? </a>
+             <a href="{{ path('app_forgot_password_request') }}" class="btn btn-primary">Mot de passe oublié ? </a>
         </form>
         {% if error %}
             <div class="alert alert-danger mt-4" role="alert">
