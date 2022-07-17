@@ -14,10 +14,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class VideoController extends AbstractController
 {
     /**
-     * @Route("/video", name="app_video")
+     * @Route("/ajoutvideo", name="app_ajoutVideo")
      * @Security("is_granted('ROLE_ADMIN')")
      */
-    public function index(RequestStack $requestStack,VideoService $videoService,VideoRepository $videoRepo): Response
+    public function ajoutVideo(RequestStack $requestStack,VideoService $videoService,VideoRepository $videoRepo): Response
     {
         $request = $requestStack->getMainRequest();
         $videoForm = $this->createForm(VideoType::class, $videoRepo->new());
@@ -26,9 +26,17 @@ class VideoController extends AbstractController
         if ($videoForm->isSubmitted() && $videoForm->isValid()) {
             return $videoService->handleVideoForm($videoForm);
         }
-            return $this->render('video/index.html.twig',[
+            return $this->render('video/ajout_video.html.twig',[
              'form'=>$videoForm->createView(),
              'videos' => $videoRepo->findAll()
+        ]);
+    }
+    #[Route('/video', name: 'app_video')]
+    public function index(RequestStack $requestStack,VideoService $videoService,VideoRepository $videoRepo): Response
+    {
+        return $this->render('video/video_file.html.twig', [
+            'controller_name' => 'VideoController',
+            'videos' => $videoRepo->findAll()
         ]);
     }
 }

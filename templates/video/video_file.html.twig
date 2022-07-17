@@ -1,21 +1,15 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
 {% block title %}Vidéos{% endblock %}
 
 {% block body %}
 {% include('inc/slides.html.twig') %}<br/>
- <div class="container mt-5 mb-5" style="max-width: 800px;">
-        <div class="row">
-            <div class="card p-3">
-                <div class="col">
-                
-                    {{ form(form, { attr: {'id': 'form_video' } }) }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
+<div class="container">
+<h2>Liste Vidéos</h2>
+</div>
+ <div class="container-fluid">
         <div class="row" id="videos_list">
+        
              {% for video in videos %}
                 <div class="col-4 mb-6">
     <div class="card">
@@ -29,5 +23,4 @@
             {% endfor %}
         </div>
     </div>
-    
-{% endblock %}
+    {% endblock %}
