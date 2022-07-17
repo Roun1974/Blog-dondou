@@ -11,6 +11,7 @@ class Video
 {
     const VIDEO_ADDED_SUCCESSFULLY = 'VIDEO_ADDED_SUCCESSFULLY';
     const VIDEO_INVALID_FORM = 'VIDEO_INVALID_FORM';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -28,12 +29,12 @@ class Video
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $thumbnail;
 
-    #[Assert\File(maxSize: '8096k', mimeTypes: ['video/mp4'])]
+    #[Assert\File(maxSize: '8996k', mimeTypes: ['video/mp4'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $video;
 
     #[ORM\ManyToOne(targetEntity: Visibility::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $visibility;
 
     public function getId(): ?int

@@ -26,8 +26,6 @@ class VideoRepository extends ServiceEntityRepository
         $video = new Video();
         $visibility = $this->getEntityManager()->find(Visibility::class, Visibility::PUBLIC);
         $video->setVisibility($visibility);
-
-
         return $video;
     }
 }

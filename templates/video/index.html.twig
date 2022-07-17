@@ -24,26 +24,10 @@
                 <source src="{{ asset('upload/videos/' ~ video.video) }}">
             </video>
             <p class="card-text"><small class="text-muted">{{ video.visibility.label }}</small></p>
-    </div>
-</div>
+    </div><br/>
+</div><br/>
             {% endfor %}
         </div>
-    </div><br/>
-    <div class="container w-25">
-    <div class="row" id="videos_list">
-             {% for video in videos %}
-    <div class="overlay"></div>
-   <video controls {% if video.thumbnail is not null %}poster="{{ asset('upload/thumbnails/' ~ video.thumbnail) }}" {% endif %}  height="420" width="420">
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
-  </video>
-  <div class="container h-100">
-    <div class="d-flex text-center h-100">
-      <div class="my-auto w-100 text-white">
-        <h1 class="display-3">Video Header</h1>
-        <h2>With HTML5 Video and Bootstrap 4</h2>
-      </div>
-       {% endfor %}
     </div>
-  </div>
-  </div>
+    
 {% endblock %}
