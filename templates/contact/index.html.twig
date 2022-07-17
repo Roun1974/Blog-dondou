@@ -4,15 +4,15 @@
 
 {% block body %}
 {% include('inc/slides.html.twig') %}<br/>
-  
  <section id="content">
  <div class="post-heading">
  <div class="container w-25">
         <div class="row">
           <div class="span12">
-          {% for message in app.flashes('success') %}
+            <h3>Formulaire de contact ! </h3>
+             {% for message in app.flashes('success') %}
         <div class="alert alert-success" >
-            {{ message }}
+             {{ message }}
         </div>
     {% endfor %}
 {{ form_start(form) }}
