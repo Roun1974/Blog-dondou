@@ -76,21 +76,17 @@ class VideoService
         return $newFileName;
     }
 
-
     private function getErrorMessages(FormInterface $form): array
     {
         $errors = [];
-
         foreach ($form->getErrors() as $error) {
             $errors[] = $error->getMessage();
         }
-
         foreach ($form->all() as $child) {
             if (!$child->isValid()) {
                 $errors[$child->getName()] = $this->getErrorMessages($child);
             }
         }
-
         return $errors;
     }
    

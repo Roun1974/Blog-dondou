@@ -19,4 +19,7 @@ return [
     SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
 
 
+
+
+
 ];
