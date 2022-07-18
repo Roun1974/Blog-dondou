@@ -28,15 +28,15 @@ class VideoController extends AbstractController
         }
             return $this->render('video/ajout_video.html.twig',[
              'form'=>$videoForm->createView(),
-             'videos' => $videoRepo->findAll()
+            
         ]);
     }
     #[Route('/video', name: 'app_video')]
     public function index(RequestStack $requestStack,VideoService $videoService,VideoRepository $videoRepo): Response
     {
-        return $this->render('video/video_file.html.twig', [
+        return $this->render('video/video.html.twig', [
             'controller_name' => 'VideoController',
-            'videos' => $videoRepo->findAll()
+            'video' => $videoRepo->findAll()
         ]);
     }
 }

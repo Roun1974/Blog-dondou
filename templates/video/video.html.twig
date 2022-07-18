@@ -9,12 +9,11 @@
 </div>
  <div class="container-fluid">
         <div class="row" id="videos_list">
-        
-             {% for video in videos %}
+             {% for video in video %}
                 <div class="col-4 mb-6">
+                <h5 class="card-title">{{ video.title }}</h5>
     <div class="card">
-            <h5 class="card-title">{{ video.title }}</h5>
-            <video controls {% if video.thumbnail is not null %}poster="{{ asset('upload/thumbnails/' ~ video.thumbnail) }}" {% endif %}  height="420" width="420">
+            <video controls {% if video.thumbnail is not null %}poster="{{ asset('upload/thumbnails/' ~ video.thumbnail) }}" {% endif %}  height="310" width="425">
                 <source src="{{ asset('upload/videos/' ~ video.video) }}">
             </video>
             <p class="card-text"><small class="text-muted">{{ video.visibility.label }}</small></p>
@@ -23,6 +22,5 @@
             {% endfor %}
         </div>
     </div>
-    
-<hr>
+          
     {% endblock %}
