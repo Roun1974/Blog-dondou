@@ -29,7 +29,7 @@ class Video
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $thumbnail;
 
-    #[Assert\File(maxSize: '8996k', mimeTypes: ['video/mp4'])]
+    #[Assert\File(maxSize: '10563k', mimeTypes: ['video/mp4'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $video;
 

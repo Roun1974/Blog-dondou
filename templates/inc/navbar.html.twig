@@ -19,7 +19,9 @@
                     <li class="nav-item">
                         <a href="{{ path('app_contact') }}" class="nav-link"><i class="fas fa-phone"></i>Contact</a>
                     </li>
-                     
+                     <li class="nav-item">
+                        <a href="{{ path('app_video') }}" class="nav-link"><i class="fas fa-video"></i>Vidéos</a>
+                    </li>
                     
                     {% for menu in menus %}
                      {% if menu.subMenus.count > 0 %}
@@ -40,9 +42,7 @@
                      {% endif %}
                    {% endfor %}
                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="nav-item">
-                        <a href="{{ path('app_video') }}" class="nav-link"><i class="fas fa-video"></i>Vidéos</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="{{ path('login') }}" class="nav-link">se connecter</a>
                     </li>
@@ -53,11 +53,11 @@
                     </li>
                      {% endif %}
                      {% else %}
+                     <li class="nav-item">
+                        <a href="{{ path('app_ajoutVideo') }}" class="nav-link">Ajout-vidéos</a>
+                    </li>
                       <li class="nav-item">
                         <a href="{{ path('logout') }}" class="nav-link">Déconnexion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_ajoutVideo') }}" class="nav-link">Ajout-vidéos</a>
                     </li>
                     <li class="nav-item">
                         <a href=" {{ path('user', { 'username': app.user.username }) }}" class="nav-link">Mon profile</a>
